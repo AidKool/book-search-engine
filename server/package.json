@@ -17,6 +17,35 @@
     "mongoose": "^5.9.10"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "prettier": "^2.5.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "commonjs": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "airbnb-base",
+      "prettier",
+      "plugin:node/recommended",
+      "plugin:promise/recommended"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest"
+    },
+    "rules": {}
   }
 }
