@@ -58,7 +58,8 @@
             ".jsx"
           ]
         }
-      ]
+      ],
+      "class-methods-use-this": "off"
     }
   },
   "browserslist": {
