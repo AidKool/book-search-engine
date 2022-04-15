@@ -33,7 +33,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    singleUser(userId: ID!): User
+    me: User
   }
 
   type Mutation {
@@ -43,4 +43,5 @@ const typeDefs = gql`
     removeBook(bookId: ID!): User
   }
 `;
+
 module.exports = typeDefs;
