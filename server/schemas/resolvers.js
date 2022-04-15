@@ -15,13 +15,13 @@ const resolvers = {
     },
 
     login: async (parent, { email, password }) => {
-      const user = await User.findOne(email);
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError('Invalid credentials');
       }
 
-      const correctPw = await User.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError('Invalid credentials');
