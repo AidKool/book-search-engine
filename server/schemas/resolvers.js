@@ -54,13 +54,13 @@ const resolvers = {
       throw new AuthenticationError('You must log in');
     },
 
-    removeBook: (_, { book }, context) => {
+    removeBook: async (_, { bookId }, context) => {
       if (context.user) {
         const userId = context.user._id;
         return User.findByIdAndUpdate(
           userId,
           {
-            $pull: { savedBooks: book },
+            $pull: { savedBooks: { bookId } },
           },
           {
             new: true,

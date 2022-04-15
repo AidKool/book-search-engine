@@ -10,14 +10,13 @@ import { useQuery, useMutation } from '@apollo/client';
 
 import { GET_ME } from '../../utils/queries';
 import { REMOVE_BOOK } from '../../utils/mutations';
-
 import Auth from '../../utils/auth';
 import { removeBookId } from '../../utils/localStorage';
 
 function SavedBooks() {
   const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
-  const [removeBook] = useMutation(REMOVE_BOOK);
+  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
@@ -28,13 +27,10 @@ function SavedBooks() {
     }
 
     try {
-      const response = await removeBook({
+      await removeBook({
         variables: { bookId },
       });
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
       // upon success, remove book's id from localStorage
       return removeBookId(bookId);
     } catch (err) {
@@ -51,19 +47,19 @@ function SavedBooks() {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1>Viewing saved books!</h1>
+          <h1>Viewing {userData.username}&rsquo;s books!</h1>
         </Container>
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedBooks.length
+          {userData.savedBooks?.length
             ? `Viewing ${userData.savedBooks.length} saved ${
                 userData.savedBooks.length === 1 ? 'book' : 'books'
               }:`
             : 'You have no saved books!'}
         </h2>
         <CardColumns>
-          {userData.savedBooks.map((book) => (
+          {userData.savedBooks?.map((book) => (
             <Card key={book.bookId} border="dark">
               {book.image ? (
                 <Card.Img
@@ -82,6 +78,7 @@ function SavedBooks() {
                 >
                   Delete this Book!
                 </Button>
+                {error && <span className="ml-2">Something went wrong...</span>}
               </Card.Body>
             </Card>
           ))}
