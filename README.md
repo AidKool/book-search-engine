@@ -25,7 +25,9 @@ A book search engine powered by the Google Books API and built with GraphQL and 
 - Express.js
 - MongoDB / Mongoose
 - GraphQL
+- Apollo Server
 - JWT Tokens
+- Google Books API
 
 ## License
 
