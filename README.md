@@ -9,6 +9,7 @@ A book search engine powered by the Google Books API and built with GraphQL and 
 ![book-search-engine](https://user-images.githubusercontent.com/73796715/163652231-117999b6-cc0f-4bd3-aba5-6cf06eb73a7a.png)
 
 ## Table of Contents
+- [Technologies](#technologies)
 
 - [License](#license)
 
@@ -17,6 +18,14 @@ A book search engine powered by the Google Books API and built with GraphQL and 
 - [Install](#install)
 
 - [Usage](#usage)
+
+## Technologies
+- React.js
+- Node.js
+- Express.js
+- MongoDB / Mongoose
+- GraphQL
+- JWT Tokens
 
 ## License
 
